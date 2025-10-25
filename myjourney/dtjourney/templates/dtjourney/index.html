@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Learning Journey</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .journey-item {
+            background: #f8f9fa;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .journey-title {
+            color: #007bff;
+            margin: 0 0 10px 0;
+            font-size: 1.3em;
+        }
+        .journey-description {
+            color: #666;
+            margin: 0;
+        }
+        .nav-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .nav-link:hover {
+            background: #0056b3;
+        }
+        .empty-state {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Learning Journey</h1>
+        
+        {% if journeys %}
+            {% for journey in journeys %}
+                <div class="journey-item">
+                    <h3 class="journey-title">{{ journey.title }}</h3>
+                    <p class="journey-description">{{ journey.description }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-state">
+                <p>No learning journeys yet. Start your journey by adding some entries!</p>
+            </div>
+        {% endif %}
+        
+        <a href="{% url 'aboutMe' %}" class="nav-link">About Me</a>
+    </div>
+</body>
+</html>

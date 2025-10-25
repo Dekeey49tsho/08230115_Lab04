@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #28a745;
+            padding-bottom: 10px;
+        }
+        .about-item {
+            background: #f8f9fa;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+        .about-name {
+            color: #28a745;
+            margin: 0 0 10px 0;
+            font-size: 1.3em;
+        }
+        .about-bio {
+            color: #666;
+            margin: 0;
+        }
+        .nav-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .nav-link:hover {
+            background: #1e7e34;
+        }
+        .empty-state {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Me</h1>
+        
+        {% if details %}
+            {% for detail in details %}
+                <div class="about-item">
+                    <h3 class="about-name">{{ detail.name }}</h3>
+                    <p class="about-bio">{{ detail.bio }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-state">
+                <p>No information available yet. Add some details about yourself!</p>
+            </div>
+        {% endif %}
+        
+        <a href="{% url 'index' %}" class="nav-link">Back to Journey</a>
+    </div>
+</body>
+</html>
